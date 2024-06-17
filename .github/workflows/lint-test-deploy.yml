@@ -1,0 +1,18 @@
+name: Lint Test Deploy Workflow
+on: push
+jobs:
+  lint-test-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get code
+        run: actions/checkout@v4.1.7
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm test
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying..."
